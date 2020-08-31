@@ -104,6 +104,7 @@ ul.ul-dropfree div.drop {
 .inputElement {
     max-width: 200px;
     border: 1px solid red;
+    margin-top: 10px;
 }
 
 .workElement {
