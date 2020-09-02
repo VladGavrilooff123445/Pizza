@@ -54,11 +54,12 @@ function buildByTemplate (arr) {
         // `
         result += `
             <div class="card">
-                <p class="title">${arr[index].name}</p>
-                <div>
-                    <img class="card_img" src="${arr[index].imgLink}" alt="${arr[index].name}">
+                
+                 <div>
+                    <p class="title">${arr[index].name}</p>
                     <span class="card_price">${arr[index].price}</span>
-<!--                    <p>${ arr[index].main_ingredients.forEach( (el) => { el })  }</p>-->
+                    <img class="card_img" src="${arr[index].imgLink}" alt="${arr[index].name}">
+                    <!--<p>${ arr[index].main_ingredients.forEach( (el) => { el })  }</p>-->
                 </div>
             </div>
         `;

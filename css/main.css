@@ -120,4 +120,14 @@ ul.ul-dropfree div.drop {
 .card_img {
     max-width: 300px;
     max-height: 300px;
+    display: block;
+    border: 1px solid #b5e9a7;
+    border-radius: 3px;
+    position: relative;
+
+    margin: 0 20px 20px 0;
+    text-decoration: none;
+    color: #474747;
+    z-index: 0;
+    height: 300px;
 }
