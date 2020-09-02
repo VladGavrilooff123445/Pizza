@@ -1,7 +1,7 @@
 [
   {
     "name": "Маргарита",
-    "price": "110 UAH",
+    "price": "110 грн.",
     "weight": "150 г",
     "picture": "https://km-doma.ru/assets/gallery_thumbnails/31/319484a4bb725e4eacab62c7f0c7f1ed.jpg",
     "main_ingredients": [
@@ -12,7 +12,7 @@
   },
   {
     "name": "Четыре сыра",
-    "price": "150 UAH",
+    "price": "150 грн.",
     "weight": "200 г",
     "picture": "https://adriano.com.ua/uploads/ckeditor/pictures/59fed83d6c656f0811f3c606/content_5.1.png",
     "main_ingredients": [
@@ -23,7 +23,7 @@
   },
   {
     "name": "Пепперони",
-    "price": "145 UAH",
+    "price": "145 грн.",
     "weight": "150 г",
     "picture": "https://vkuso.ru/data/picca-pepperoni-na-drozhzhevom-teste.jpg",
     "main_ingredients": [
@@ -34,7 +34,7 @@
   },
   {
     "name": "Капричиоза",
-    "price": "130 UAH",
+    "price": "130 грн.",
     "weight": "180 г",
     "picture": "https://yummypizza.ru/images/library/sc_1/65/medium_kaprichoza.jpg?1556628624",
     "main_ingredients": [
@@ -47,7 +47,7 @@
   },
   {
     "name": "Неаполитанская",
-    "price": "140 UAH",
+    "price": "140 грн.",
     "weight": "250 г",
     "picture": "https://www.chefmarket.ru/blog/wp-content/uploads/2019/08/neapolitan-pizza-recipe-e1565951728830.jpg",
     "main_ingredients": [
@@ -59,7 +59,7 @@
   },
   {
     "name": "Сицилийская",
-    "price": "115 UAH",
+    "price": "115 грн.",
     "weight": "100 г",
     "picture": "https://fishrice.od.ua/image/cache/catalog/picca/sicilia-520x350h.jpg",
     "main_ingredients": [
@@ -74,7 +74,7 @@
   },
   {
     "name": "Пицца с морепродуктами",
-    "price": "155 UAH",
+    "price": "155 грн.",
     "weight": "160 г",
     "picture": "https://lh5.googleusercontent.com/dW9MQSObavamZ_T9m1OdsyaEO4PHDZfB1kvR_jFL0U2kwyRwnxl_2aUYkUEV_qD3rRpPuLYgDsR-lzdQ_KNUl3vviLHjAUkaXrOThU2Ce4e0MDu1dGG9OzJZYaYvQWO94LC1qAzm",
     "main_ingredients": [
@@ -89,7 +89,7 @@
   },
   {
     "name": "Дьябола",
-    "price": "125 UAH",
+    "price": "125 грн.",
     "weight": "140 г",
     "picture": "https://thumbs.dreamstime.com/b/%D0%BA%D0%BE%D0%BD%D0%B5%D1%86-%D0%B2%D0%B2%D0%B5%D1%80%D1%85-%D0%BF%D0%B8%D1%86%D1%86%D1%8B-%D0%B4%D0%B8%D0%B0%D0%B1%D0%BB%D0%BE-%D0%BD%D0%B0-%D0%B4%D0%B5%D1%80%D0%B5%D0%B2%D1%8F%D0%BD%D0%BD%D0%BE%D0%BC-%D1%81%D1%82%D0%BE%D0%BB%D0%B5-%D1%80%D1%8F%D0%B4%D0%BE%D0%BC-%D1%81-%D0%BF%D0%B5%D1%80%D1%86%D0%B0%D0%BC%D0%B8-%D0%B8-condiments-145510153.jpg",
     "main_ingredients": [
@@ -102,7 +102,7 @@
   },
   {
     "name": "Кальцоне",
-    "price": "110 UAH",
+    "price": "110 грн.",
     "weight": "90 г",
     "picture": "https://cdn.segodnya.ua/img/article/11873/67_ls.1541771992.jpg",
     "main_ingredients": [
@@ -115,7 +115,7 @@
   },
   {
     "name": "Гавайская",
-    "price": "150 UAH",
+    "price": "150 грн.",
     "weight": "150 г",
     "picture": "https://www.svoimirykami.club/wp-content/uploads/2017/09/Gavajskaya-pitstsa-min.jpg",
     "main_ingredients": [
