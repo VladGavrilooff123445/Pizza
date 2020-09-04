@@ -44,7 +44,7 @@ let data = [
         "price": "115 грн.",
         "weight": "100 г",
         "picture": "https://fishrice.od.ua/image/cache/catalog/picca/sicilia-520x350h.jpg",
-        "main_ingredients": "сыр Пекорино, анчоусы, помидоры, лук, зелень, оливки,грибы"
+        "main_ingredients": "сыр Пекорино, анчоусы, помидоры, лук, зелень, оливки, грибы"
 
     },
     {
@@ -87,40 +87,50 @@ let paramSortByIngridients = true;
 
 function clickPrice() {
     console.log('clickPrice');
-     data.sort((a,b)=>{
+    data.sort((a, b) => {
         if (paramSortByPrice ? parseInt(a.price) > parseInt(b.price) : parseInt(a.price) < parseInt(b.price)) return 1;
         if (parseInt(a.price) == parseInt(b.price)) return 0;
         if (paramSortByPrice ? parseInt(a.price) < parseInt(b.price) : parseInt(a.price) > parseInt(b.price)) return -1;
     })
-     paramSortByPrice = !paramSortByPrice;
-     mainEl.innerHTML = buildByTemplate(data);
+    paramSortByPrice = !paramSortByPrice;
+    mainEl.innerHTML = buildByTemplate(data);
 }
-function clickIngridients()
-{
 
- const temp = [];
- for(let i = 0; i < data.length; i++)
- {
-     for(let j = i+1; j < data.length; j++)
-     {
-         console.log(data[i].main_ingredients);
-         if(data[i].main_ingredients.length > data[j].main_ingredients.length )
-         {
-             if( data.name[i] !== data.name[i-1] )
-             {
-                 temp.push(data[i]);
-             }
+function clickIngridients() {
+    const temp = [];
+    let data2 = JSON.parse(JSON.stringify(data));
+    for (let i = 0; i < data2.length; i++) {
+        let max = data2[i];
+        for (let j = 0; j < data2.length; j++) {//temp[3(1el), temp[3(1el),]
+            console.log(data2[i].main_ingredients); // [3,3,3,5,6,4,3,2,3]
+            if (max.main_ingredients.length < data2[j].main_ingredients.length) {
+                if (temp.length !== 0){
+                    let isDublicate = false;
+                    for (let k = 0; k <temp.length; k++) {
+                        if (temp[k].name === data2[j].name) {
+                            isDublicate = true;
+                        }
+                    }
+                    if (!isDublicate){
+                        max = data2[j];
+                    }
+                } else {
+                    max = data2[j];
+                }
+                // if (data[i].name !== data[j].name) {
+                //     temp.push(data[i]);
+                // }
+            }
+        }
+        temp.push(max);
+    }
 
-         }
-     }
- }
-
- mainEl.innerHTML = buildByTemplate(temp);
+    mainEl.innerHTML = buildByTemplate(temp);
 }
 
 //todo: make sort by ingredients
 
-function buildByTemplate (arr) {
+function buildByTemplate(arr) {
     let result = '';
     for (let index = 0; index < arr.length; index++) {
         result += `
