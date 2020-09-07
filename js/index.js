@@ -103,7 +103,7 @@ function clickIngridients() {
         let max = data2[i];
         for (let j = 0; j < data2.length; j++) {//temp[3(1el), temp[3(1el),]
             console.log(data2[i].main_ingredients); // [3,3,3,5,4,7,7,5,5,5]
-            if (max.main_ingredients.length > data2[j].main_ingredients.lengthцццц) {
+            if (max.main_ingredients.length > data2[j].main_ingredients.length) {
                 if (temp.length > 0) {
                     let isDublicate = false;
                     for (let k = 0; k < temp.length; k++) {
@@ -132,7 +132,23 @@ function clickIngridients() {
     mainEl.innerHTML = buildByTemplate(data);
 }
 
-//todo: make sort by ingredients
+
+function search(self) {
+    if (self.target.value.length > 3) {
+        let data2 = [];
+        data.forEach((item) => {
+            if (item.name.indexOf(self.target.value) > -1) {
+
+                data2.push(item);
+            }
+        })
+        mainEl.innerHTML = buildByTemplate(data2);
+    } else {
+        mainEl.innerHTML = buildByTemplate(data);
+    }
+}
+
+//TODO: new css for PizzaCard Исправить карточки
 
 function buildByTemplate(arr) {
     let result = '';
@@ -156,4 +172,5 @@ function buildByTemplate(arr) {
 }
 
 mainEl.innerHTML = buildByTemplate(data);
+document.querySelector('[data-content="input"]').addEventListener('input', search.bind(this));
 // console.log(buildingText);
