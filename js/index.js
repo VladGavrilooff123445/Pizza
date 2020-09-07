@@ -97,35 +97,39 @@ function clickPrice() {
 }
 
 function clickIngridients() {
-    const temp = [];
+    /*const temp = [];
     let data2 = JSON.parse(JSON.stringify(data));
     for (let i = 0; i < data2.length; i++) {
         let max = data2[i];
         for (let j = 0; j < data2.length; j++) {//temp[3(1el), temp[3(1el),]
-            console.log(data2[i].main_ingredients); // [3,3,3,5,6,4,3,2,3]
-            if (max.main_ingredients.length < data2[j].main_ingredients.length) {
-                if (temp.length !== 0){
+            console.log(data2[i].main_ingredients); // [3,3,3,5,4,7,7,5,5,5]
+            if (max.main_ingredients.length > data2[j].main_ingredients.lengthцццц) {
+                if (temp.length > 0) {
                     let isDublicate = false;
-                    for (let k = 0; k <temp.length; k++) {
+                    for (let k = 0; k < temp.length; k++) {
                         if (temp[k].name === data2[j].name) {
                             isDublicate = true;
                         }
                     }
-                    if (!isDublicate){
+                    if (!isDublicate) {
                         max = data2[j];
                     }
                 } else {
                     max = data2[j];
                 }
-                // if (data[i].name !== data[j].name) {
-                //     temp.push(data[i]);
-                // }
-            }
-        }
-        temp.push(max);
-    }
 
-    mainEl.innerHTML = buildByTemplate(temp);
+            }
+            temp.push(max);
+        }
+        mainEl.innerHTML = buildByTemplate(temp);
+    }*/
+    data.sort((a, b) => {
+        if (paramSortByIngridients ? parseInt(a.main_ingredients.length) > parseInt(b.main_ingredients.length) : parseInt(a.main_ingredients.length) < parseInt(b.main_ingredients.length)) return 1;
+        if (parseInt(a.main_ingredients.length) == parseInt(b.main_ingredients.length)) return 0;
+        if (paramSortByIngridients ? parseInt(a.main_ingredients.length) < parseInt(b.main_ingredients.length) : parseInt(a.main_ingredients.length) > parseInt(b.main_ingredients.length)) return -1;
+    })
+    paramSortByIngridients = !paramSortByIngridients;
+    mainEl.innerHTML = buildByTemplate(data);
 }
 
 //todo: make sort by ingredients
