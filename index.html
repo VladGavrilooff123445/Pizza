@@ -9,11 +9,21 @@
 
     <link rel="stylesheet" href="css/custom-normalize.css">
     <link rel="stylesheet" href="css/main.css">
-<!--    <link rel="stylesheet" href="css/style.css">-->
+    <!--    <link rel="stylesheet" href="css/style.css">-->
 </head>
 <body>
 
 <header class="content_wrapper header">
+    <div class="carousel">
+        <!-- кнопки "назад" и "вперёд", листающие слайды -->
+        <a class="prev-slide" onclick="moveSlides(-1)">&#10094;</a>
+        <a class="next-slide" onclick="moveSlides(1)">&#10095;</a>
+
+        <div data-content="image" class="slide_image">
+            <!---<img class="slide_image" src ="https://km-doma.ru/assets/gallery_thumbnails/31/319484a4bb725e4eacab62c7f0c7f1ed.jpg">-->
+        </div>
+
+    </div>
     <h3>
         Pizza Market
     </h3>
@@ -26,20 +36,20 @@
         <text class="header_text">Поиск пиццы</text>
     </div>
     <div>
-        <button onclick="clickPrice()"> цена </button>
-        <button onclick = "clickIngridients()"> ингридиенты </button>
+        <button onclick="clickPrice()"> цена</button>
+        <button onclick="clickIngridients()"> ингридиенты</button>
 
         <div data-content="select" class="container workElement">
 
 
-    <!--        <div class="card">-->
+            <!--        <div class="card">-->
 
-    <!--            <div>-->
-    <!--                <img class="card_img" src="https://km-doma.ru/assets/gallery_thumbnails/31/319484a4bb725e4eacab62c7f0c7f1ed.jpg" alt="">-->
-    <!--        <p class="title">Maranella</p>-->
-    <!--                <span class="card_price">price</span>-->
-    <!--            </div>-->
-    <!--        </div>-->
+            <!--            <div>-->
+            <!--                <img class="card_img" src="https://km-doma.ru/assets/gallery_thumbnails/31/319484a4bb725e4eacab62c7f0c7f1ed.jpg" alt="">-->
+            <!--        <p class="title">Maranella</p>-->
+            <!--                <span class="card_price">price</span>-->
+            <!--            </div>-->
+            <!--        </div>-->
 
         </div>
     </div>

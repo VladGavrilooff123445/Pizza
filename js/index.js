@@ -80,8 +80,9 @@ let data = [
     }
 ]
 
-
+let elementOfPicture = 0;
 const mainEl = document.querySelector('[data-content="select"]')
+const slideData = document.querySelector('[data-content="image"]')
 let paramSortByPrice = true;
 let paramSortByIngridients = true;
 
@@ -97,32 +98,6 @@ function clickPrice() {
 }
 
 function clickIngridients() {
-    /*const temp = [];
-    let data2 = JSON.parse(JSON.stringify(data));
-    for (let i = 0; i < data2.length; i++) {
-        let max = data2[i];
-        for (let j = 0; j < data2.length; j++) {//temp[3(1el), temp[3(1el),]
-            console.log(data2[i].main_ingredients); // [3,3,3,5,4,7,7,5,5,5]
-            if (max.main_ingredients.length > data2[j].main_ingredients.length) {
-                if (temp.length > 0) {
-                    let isDublicate = false;
-                    for (let k = 0; k < temp.length; k++) {
-                        if (temp[k].name === data2[j].name) {
-                            isDublicate = true;
-                        }
-                    }
-                    if (!isDublicate) {
-                        max = data2[j];
-                    }
-                } else {
-                    max = data2[j];
-                }
-
-            }
-            temp.push(max);
-        }
-        mainEl.innerHTML = buildByTemplate(temp);
-    }*/
     data.sort((a, b) => {
         if (paramSortByIngridients ? parseInt(a.main_ingredients.length) > parseInt(b.main_ingredients.length) : parseInt(a.main_ingredients.length) < parseInt(b.main_ingredients.length)) return 1;
         if (parseInt(a.main_ingredients.length) == parseInt(b.main_ingredients.length)) return 0;
@@ -137,7 +112,7 @@ function search(self) {
     if (self.target.value.length > 3) {
         let data2 = [];
         data.forEach((item) => {
-            if (item.name.indexOf(self.target.value) > -1) {
+            if (item.name.toLowerCase().indexOf(self.target.value.toLowerCase()) > -1) {
 
                 data2.push(item);
             }
@@ -171,6 +146,29 @@ function buildByTemplate(arr) {
     return result;
 }
 
+function moveSlides(flag) {
+    let result = '';
+    switch (flag) {
+        case 1:
+            result += `<img class="slide_img" src="${data[elementOfPicture].picture}">`;
+            ++elementOfPicture;
+            slideData.innerHTML = result;
+            if (elementOfPicture === data.length)
+                elementOfPicture = 0;
+            break;
+        case -1:
+            if (elementOfPicture === 0)
+                elementOfPicture = data.length - 1;
+            result += `<img class="slide_img" src="${data[elementOfPicture].picture}">`;
+            slideData.innerHTML = result;
+            --elementOfPicture;
+            break;
+        default:
+            break;
+    }
+}
+
 mainEl.innerHTML = buildByTemplate(data);
+//slideData.innerHTML = moveSlides(data);
 document.querySelector('[data-content="input"]').addEventListener('input', search.bind(this));
 // console.log(buildingText);
