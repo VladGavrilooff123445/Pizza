@@ -61,6 +61,7 @@ let data = [
 let elementOfPicture = 0;
 const mainEl = document.querySelector('[data-content="select"]')
 const slideData = document.querySelector('[data-content="image"]')
+let count = 1
 let paramSortByPrice = true;
 let paramSortByIngridients = true;
 
@@ -103,8 +104,6 @@ function search(self) {
     }
 }
 
-//TODO: исправить слайдер
-
 function buildByTemplate(arr) {
     let result = '';
     for (let index = 0; index < arr.length; index++) {
@@ -124,37 +123,40 @@ function buildByTemplate(arr) {
 }
 
 function moveSlides(flag) {
+    if (flag === 1 && count === 1) {
+        ++elementOfPicture;
+    }
+    if (flag === -1 && count === 1) {
+        elementOfPicture = data.length - 1;
+    }
     let result = '';
-    if(flag===undefined){
-         result = `<img class="slide_img_content" src="${data[0].picture}"  style="max-width: 500px">`;
-        slideData.innerHTML = result;
+    switch (flag) {
+        case 1:
+            result += `<img class="slide_img_content" src="${data[elementOfPicture].picture}"  style="max-width: 500px">`;
+            ++elementOfPicture;
+            slideData.innerHTML = result;
+            if (elementOfPicture === data.length)
+                elementOfPicture = 0;
+            count++;
+            break;
+        case -1:
+            if (elementOfPicture === 0)
+                elementOfPicture = data.length - 1;
+            result += `<img class="slide_img_content" src="${data[elementOfPicture].picture}">`;
+            slideData.innerHTML = result;
+            --elementOfPicture;
+            count++;
+            break;
+        default:
+            break;
     }
-    else{
-        if(flag===1){++elementOfPicture;}
-        if(flag===-1){--elementOfPicture;}
-        switch (flag) {
-            case 1:
-                result += `<img class="slide_img_content" src="${data[elementOfPicture].picture}"  style="max-width: 500px">`;
-                ++elementOfPicture;
-                slideData.innerHTML = result;
-                if (elementOfPicture === data.length)
-                    elementOfPicture = 0;
-                break;
-            case -1:
-                if (elementOfPicture === 0)
-                    elementOfPicture = data.length - 1;
-                result += `<img class="slide_img_content" src="${data[elementOfPicture].picture}">`;
-                slideData.innerHTML = result;
-                --elementOfPicture;
-                break;
-            default:
-                break;
-        }
-    }
-
 }
 
 mainEl.innerHTML = buildByTemplate(data);
 //slideData.innerHTML = moveSlides(data);
+if (flag === undefined) {
+    let slide = `<img class="slide_img_content" src="${data[0].picture}"  style="max-width: 500px">`;
+    slideData.innerHTML = slide;
+}
 document.querySelector('[data-content="input"]').addEventListener('input', search.bind(this));
 // console.log(buildingText);
