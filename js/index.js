@@ -6,13 +6,6 @@ let data = [
         "picture": "https://km-doma.ru/assets/gallery_thumbnails/31/319484a4bb725e4eacab62c7f0c7f1ed.jpg",
         "main_ingredients": ['томатная паста', 'базилик', 'моцарелла']
     }, {
-        "name": "Четыре сыра",
-        "price": "150 грн.",
-        "weight": "200 г",
-        "picture": "https://adriano.com.ua/uploads/ckeditor/pictures/59fed83d6c656f0811f3c606/content_5.1.png",
-        "main_ingredients": ['дор блю', 'парнизан', 'моцарелла']
-
-    }, {
         "name": "Пепперони",
         "price": "145 грн.",
         "weight": "150 г",
@@ -62,13 +55,7 @@ let data = [
         "picture": "https://cdn.segodnya.ua/img/article/11873/67_ls.1541771992.jpg",
         "main_ingredients": ['томатная паста', 'базилик', 'моцарелла', 'пепперони', 'грибы']
 
-    }, {
-        "name": "Гавайская",
-        "price": "150 грн.",
-        "weight": "150 г",
-        "picture": "https://www.svoimirykami.club/wp-content/uploads/2017/09/Gavajskaya-pitstsa-min.jpg",
-        "main_ingredients": ['ананас', 'сливочный соус', 'ветчина', 'красный лук', 'моцарелла']
-    }
+    },
 ]
 
 let elementOfPicture = 0;
@@ -102,13 +89,11 @@ function clickIngridients() {
 
 
 function search(self) {
-    // debugger;
-    console.log(self.target.value);
-    if (self.target.value.length > 3) {
+    //console.log(self.target.value);
+    if (self.target.value.length > 2) {
         let data2 = [];
         data.forEach((item) => {
             if (item.name.toLowerCase().indexOf(self.target.value.toLowerCase()) > -1) {
-
                 data2.push(item);
             }
         })
@@ -118,7 +103,7 @@ function search(self) {
     }
 }
 
-//TODO: new css for PizzaCard Исправить карточки
+//TODO: исправить слайдер
 
 function buildByTemplate(arr) {
     let result = '';
@@ -126,20 +111,13 @@ function buildByTemplate(arr) {
         let main_ingredients = arr[index].main_ingredients.toString().split(',').join(', ');
         // console.log(arr[index].main_ingredients);
         result += `
-            <div class='card__main_wrapper' style="background: url('${arr[index].picture}')">
-                <div class="card">
-                    <div class="card__wrapper">
-                        <div class="card__content">
-                            <p class="card__content_title">${arr[index].name}</p>
-                            <div class="price_ingrid">
-                                <div class="card__content_price">${arr[index].price}</div>
-                                <div class="card__content_items">${main_ingredients}</div>
-                            </div>
-                        </div>
-                    </div>
-<!--                   <img class="card_img" src="${arr[index].picture}" alt="${arr[index].name}">-->
-                </div>
-            </div>
+           <div class="card" style="width: 18rem;">
+               <img src="${arr[index].picture}" class="card-img-top" >
+               <div class="card-body">
+                 <h5 class="card-title">${arr[index].name}</h5>
+                 <p class="card-text">${arr[index].price}</p>
+               </div>
+           </div>
         `;
     }
     return result;
@@ -147,24 +125,33 @@ function buildByTemplate(arr) {
 
 function moveSlides(flag) {
     let result = '';
-    switch (flag) {
-        case 1:
-            result += `<img class="slide_img_content" src="${data[elementOfPicture].picture}">`;
-            ++elementOfPicture;
-            slideData.innerHTML = result;
-            if (elementOfPicture === data.length)
-                elementOfPicture = 0;
-            break;
-        case -1:
-            if (elementOfPicture === 0)
-                elementOfPicture = data.length - 1;
-            result += `<img class="slide_img_content" src="${data[elementOfPicture].picture}">`;
-            slideData.innerHTML = result;
-            --elementOfPicture;
-            break;
-        default:
-            break;
+    if(flag===undefined){
+         result = `<img class="slide_img_content" src="${data[0].picture}"  style="max-width: 500px">`;
+        slideData.innerHTML = result;
     }
+    else{
+        if(flag===1){++elementOfPicture;}
+        if(flag===-1){--elementOfPicture;}
+        switch (flag) {
+            case 1:
+                result += `<img class="slide_img_content" src="${data[elementOfPicture].picture}"  style="max-width: 500px">`;
+                ++elementOfPicture;
+                slideData.innerHTML = result;
+                if (elementOfPicture === data.length)
+                    elementOfPicture = 0;
+                break;
+            case -1:
+                if (elementOfPicture === 0)
+                    elementOfPicture = data.length - 1;
+                result += `<img class="slide_img_content" src="${data[elementOfPicture].picture}">`;
+                slideData.innerHTML = result;
+                --elementOfPicture;
+                break;
+            default:
+                break;
+        }
+    }
+
 }
 
 mainEl.innerHTML = buildByTemplate(data);
